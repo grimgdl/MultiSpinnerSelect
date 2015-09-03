@@ -1,2 +1,4 @@
-# Multi Spinner Multi choice
+# Spinner Multi choice
 ## MultiSpinnerSelect with ArrayList&lt;collection>
+
+
