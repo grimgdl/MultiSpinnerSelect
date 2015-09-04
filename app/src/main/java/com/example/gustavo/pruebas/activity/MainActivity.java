@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
 
         multiSpinnerSelect = (MultiSpinnerSelect)
                 findViewById(R.id.spinner_product);
-        multiSpinnerSelect.setItems(getProductos(),"Nada select",this);
+        multiSpinnerSelect.setItems(getProductos(),"Nothing Selected",this);
     }
 
     private ArrayList<Producto> getProductos(){

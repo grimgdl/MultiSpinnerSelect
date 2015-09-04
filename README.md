@@ -9,7 +9,7 @@
 
 ## Capture
 
-![alt tag](https://cloud.githubusercontent.com/assets/4397770/9688320/137eb67a-52f4-11e5-894d-ea9d0e2537bc.png)
+![alt tag](https://cloud.githubusercontent.com/assets/4397770/9688649/32270ea4-52f6-11e5-872f-8e4e87fb6052.png)
 
 ![alt tag](https://cloud.githubusercontent.com/assets/4397770/9688322/139dae04-52f4-11e5-8cac-f6981114e232.png)
 
