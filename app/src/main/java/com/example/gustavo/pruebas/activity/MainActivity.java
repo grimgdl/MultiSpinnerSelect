@@ -100,9 +100,10 @@ public class MainActivity extends AppCompatActivity implements
         ArrayList<Producto> sele = multiSpinnerSelect.getSelectedItems();
 
         txt.setText("");
+        txt.setText("item id\t\t\t\t\t\tnombre\n");
         for (Producto producto : sele){
-            txt.append("id:"+producto.getId()+"nombre:"+producto.getNombre());
-            txt.append(", \n");
+            txt.append(producto.getId()+"\t\t\t\t\t\t\t\t\t\t"+producto.getNombre());
+            txt.append(" \n");
 
         }
     }
