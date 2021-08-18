@@ -28,13 +28,14 @@ android {
 
 project.afterEvaluate {
     publishing {
-        publications{
-            release(MavenPublication){
+        publications {
+            release(MavenPublication) {
                 from components.release
             }
         }
     }
 }
+
 
 
 dependencies {

@@ -3,4 +3,4 @@ jdk:
 
 
 install:
-  - ./gradlew build :lib:publishToMavenLocal
+  - ./gradlew :MultiSpinnerSelector:build :MultiSpinnerSelector:publishToMavenLocal -x :MultiSpinnerSelector:test
