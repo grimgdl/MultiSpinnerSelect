@@ -1,6 +1,5 @@
 jdk:
   - openjdk11
 
-
 install:
-  - ./gradlew :MultiSpinnerSelector:build :MultiSpinnerSelector:publishToMavenLocal -x :MultiSpinnerSelector:test
+  - ./gradlew build :lib:publishToMavenLocal
