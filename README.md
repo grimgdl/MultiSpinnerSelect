@@ -25,6 +25,12 @@
 ## How to implement
 [![](https://jitpack.io/v/grimarj89/MultiSpinnerSelect.svg)](https://jitpack.io/#grimarj89/MultiSpinnerSelect)
 
+
+
+Step 1. Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+
 ```
 
 
@@ -38,13 +44,13 @@
 
 ```
 
-
+Step 2. Add the dependency
 
 ```
     dependencies {
 	        implementation 'com.github.grimarj89:MultiSpinnerSelect:Tag'
-	}
 
+	}
 
 ```
 
