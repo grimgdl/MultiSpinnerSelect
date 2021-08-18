@@ -1,19 +1,26 @@
 package com.grimgdl.model;
 
 
-public class Producto {
+public class Product {
 
-    private String _nombre;
-    private String _presentacion;
+    private String _title;
+    private String _subTitle;
     private boolean checked = false;
     private int _id;
 
+    public Product(int id, String title, String subtitle ){
+        this._id = id;
+        this._title = title;
+        this._subTitle = subtitle;
+
+    }
+
     public String getNombre() {
-        return _nombre;
+        return _title;
     }
 
     public void setNombre(String nombre) {
-        this._nombre = nombre;
+        this._title = nombre;
     }
 
     public int getId() {
@@ -25,11 +32,11 @@ public class Producto {
     }
 
     public String getPresentacion() {
-        return _presentacion;
+        return _subTitle;
     }
 
     public void setPresentacion(String _presentacion) {
-        this._presentacion = _presentacion;
+        this._subTitle = _presentacion;
     }
 
     public boolean isChecked() {

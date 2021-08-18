@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.gustavo.pruebas.R;
-import com.grimgdl.model.Producto;
+import com.grimgdl.model.Product;
 import com.grimgdl.ui.widget.MultiSpinnerSelect;
 
 import java.util.ArrayList;
@@ -33,23 +33,20 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnSelected = (Button) findViewById(R.id.button);
+        btnSelected =  findViewById(R.id.button);
         btnSelected.setOnClickListener(this);
 
-        txt = (TextView) findViewById(R.id.txt_texto);
+        txt = findViewById(R.id.txt_texto);
 
-        multiSpinnerSelect = (MultiSpinnerSelect)
-                findViewById(R.id.spinner_product);
-        multiSpinnerSelect.setItems(getProductos(),"Nothing Selected",this);
+        multiSpinnerSelect = findViewById(R.id.spinner_product);
+        multiSpinnerSelect.setItems(getProducts(),"Nothing Selected",this);
     }
 
-    private ArrayList<Producto> getProductos(){
-        ArrayList<Producto> arrayList = new ArrayList<>();
+    private ArrayList<Product> getProducts(){
+        ArrayList<Product> arrayList = new ArrayList<>();
         for (int i=0; i < 20; i++){
-            final Producto producto = new Producto();
-            producto.setId(i + 1);
-            producto.setNombre("Producto " + i);
-            producto.setPresentacion("gr2" + i);
+            final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
+
 
             arrayList.add(producto);
         }
@@ -101,11 +98,11 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     public void getSelected(){
-        ArrayList<Producto> sele = multiSpinnerSelect.getSelectedItems();
+        ArrayList<Product> sele = multiSpinnerSelect.getSelectedItems();
 
         txt.setText("");
         txt.setText("item id\t\t\t\t\t\tnombre\n");
-        for (Producto producto : sele){
+        for (Product producto : sele){
             txt.append(producto.getId()+"\t\t\t\t\t\t\t\t\t\t"+producto.getNombre());
             txt.append(" \n");
 

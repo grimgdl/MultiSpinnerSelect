@@ -73,24 +73,31 @@ Step 2. Add the dependency
 
 ```java
 
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
 
-        MultiSpinnerSelect spinnerSelect = findViewById(R.id.spinner);
+        multiSpinnerSelect = findViewById(R.id.spinner_product);
+        multiSpinnerSelect.setItems(getProducts(),"Nothing Selected",this);
+        }
 
-        ArrayList<Producto> items = new ArrayList();
-
-        Producto producto1 = new Producto();
-        producto1.setNombre("Product 1");
-        items.add(producto1);
-
-        Producto producto2= new Producto();
-        producto1.setNombre("Product 2");
-        items.add(producto2);
+private ArrayList<Product> getProducts(){
+        ArrayList<Product> arrayList = new ArrayList<>();
+        for (int i=0; i < 20; i++){
+final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
 
 
-        Productos adapter = new Productos(this, android.R.layout.simple_list_item_2, items);
+        arrayList.add(producto);
+        }
 
-        spinnerSelect.setAdapter(adapter);
 
+        return arrayList;
+        }
+
+
+        
 
 ```
 

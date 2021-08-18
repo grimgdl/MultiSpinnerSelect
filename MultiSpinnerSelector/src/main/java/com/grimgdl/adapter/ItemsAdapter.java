@@ -9,18 +9,18 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.grimgdl.R;
-import com.grimgdl.model.Producto;
+import com.grimgdl.model.Product;
 
 import java.util.ArrayList;
 
 
 
-public class Productos extends ArrayAdapter<Producto>{
+public class ItemsAdapter extends ArrayAdapter<Product>{
 
     Context context;
-    ArrayList<Producto> productos;
+    ArrayList<Product> productos;
     LayoutInflater inflater;
-    Producto modelProducto;
+    Product modelProducto;
 
     private class ViewHolder{
         TextView txtNombre;
@@ -28,8 +28,8 @@ public class Productos extends ArrayAdapter<Producto>{
         CheckBox checkBox;
 
     }
-    public Productos(Context context, int resource, ArrayList<Producto> objects) {
-        super(context, resource, objects);
+    public ItemsAdapter(Context context, ArrayList<Product> objects) {
+        super(context, android.R.layout.simple_list_item_2, objects);
 
         this.context = context;
         this.productos = objects;
@@ -45,9 +45,9 @@ public class Productos extends ArrayAdapter<Producto>{
             row = inflater.inflate(R.layout.row_producto, parent, false);
             viewHolder = new ViewHolder();
 
-            viewHolder.txtNombre = (TextView) row.findViewById(R.id.txt_nombre_producto);
-            viewHolder.txtPresentacion = (TextView) row.findViewById(R.id.txt_presenta_producto);
-            viewHolder.checkBox = (CheckBox) row.findViewById(R.id.checkBoxPro);
+            viewHolder.txtNombre =  row.findViewById(R.id.txt_nombre_producto);
+            viewHolder.txtPresentacion =  row.findViewById(R.id.txt_presenta_producto);
+            viewHolder.checkBox = row.findViewById(R.id.checkBoxPro);
             row.setTag(viewHolder);
 
 
@@ -62,12 +62,11 @@ public class Productos extends ArrayAdapter<Producto>{
         viewHolder.checkBox.setChecked(modelProducto.isChecked());
 
 
-
         return row;
 
     }
 
-    public ArrayList<Producto> getProductos(){
+    public ArrayList<Product> getProductos(){
         return productos;
     }
 }
