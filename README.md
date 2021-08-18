@@ -48,7 +48,7 @@ Step 2. Add the dependency
 
 ```
     dependencies {
-	        implementation 'com.github.grimarj89:MultiSpinnerSelect:Tag'
+	        implementation 'com.github.grimarj89:MultiSpinnerSelect:$version'
 
 	}
 
