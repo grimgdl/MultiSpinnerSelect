@@ -1,4 +1,4 @@
-package com.example.gustavo.pruebas.model;
+package com.grimgdl.model;
 
 
 public class Producto {

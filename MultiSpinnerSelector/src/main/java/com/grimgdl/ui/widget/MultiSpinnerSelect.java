@@ -1,4 +1,4 @@
-package com.example.gustavo.pruebas.widget;
+package com.grimgdl.ui.widget;
 
 
 
@@ -16,11 +16,10 @@ import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
-import com.example.gustavo.pruebas.adapter.Productos;
-import com.example.gustavo.pruebas.model.Producto;
+import com.grimgdl.adapter.Productos;
+import com.grimgdl.model.Producto;
 
 import java.util.ArrayList;
 

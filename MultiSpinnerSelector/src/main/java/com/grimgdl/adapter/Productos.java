@@ -1,4 +1,4 @@
-package com.example.gustavo.pruebas.adapter;
+package com.grimgdl.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,9 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-
-import com.example.gustavo.pruebas.R;
-import com.example.gustavo.pruebas.model.Producto;
+import com.grimgdl.R;
+import com.grimgdl.model.Producto;
 
 import java.util.ArrayList;
 

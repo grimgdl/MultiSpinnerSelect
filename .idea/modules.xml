@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Pruebas.iml" filepath="$PROJECT_DIR$/Pruebas.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MultiSpinnerSelect.iml" filepath="$PROJECT_DIR$/.idea/modules/MultiSpinnerSelect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MultiSpinnerSelector/MultiSpinnerSelect.MultiSpinnerSelector.iml" filepath="$PROJECT_DIR$/.idea/modules/MultiSpinnerSelector/MultiSpinnerSelect.MultiSpinnerSelector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MultiSpinnerSelect.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MultiSpinnerSelect.app.iml" />
     </modules>
   </component>
 </project>
-

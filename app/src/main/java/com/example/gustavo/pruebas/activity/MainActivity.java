@@ -1,18 +1,22 @@
 package com.example.gustavo.pruebas.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.gustavo.pruebas.R;
-import com.example.gustavo.pruebas.model.Producto;
-import com.example.gustavo.pruebas.widget.MultiSpinnerSelect;
+import com.grimgdl.model.Producto;
+import com.grimgdl.ui.widget.MultiSpinnerSelect;
 
 import java.util.ArrayList;
+
+
 
 
 public class MainActivity extends AppCompatActivity implements
