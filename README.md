@@ -81,12 +81,12 @@ protected void onCreate(Bundle savedInstanceState) {
 
         multiSpinnerSelect = findViewById(R.id.spinner_product);
         multiSpinnerSelect.setItems(getProducts(),"Nothing Selected",this);
-        }
+}
 
 private ArrayList<Product> getProducts(){
         ArrayList<Product> arrayList = new ArrayList<>();
         for (int i=0; i < 20; i++){
-final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
+        final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
 
 
         arrayList.add(producto);
@@ -94,10 +94,9 @@ final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
 
 
         return arrayList;
-        }
+}
 
 
-        
 
 ```
 
