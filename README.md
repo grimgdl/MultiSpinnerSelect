@@ -86,10 +86,8 @@ protected void onCreate(Bundle savedInstanceState) {
 private ArrayList<Product> getProducts(){
         ArrayList<Product> arrayList = new ArrayList<>();
         for (int i=0; i < 20; i++){
-        final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
-
-
-        arrayList.add(producto);
+            final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i);
+            arrayList.add(producto);
         }
 
 
@@ -97,6 +95,15 @@ private ArrayList<Product> getProducts(){
 }
 
 
+
+```
+
+## Methods
+
+```java
+
+    multiSpinnerSelect.getSelectedProduct()
+    
 
 ```
 
