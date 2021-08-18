@@ -7,6 +7,9 @@
 
 
 
+
+
+
 ## Capture
 
 ![alt tag](https://cloud.githubusercontent.com/assets/4397770/9688649/32270ea4-52f6-11e5-872f-8e4e87fb6052.png)
@@ -16,5 +19,37 @@
 ![alt tag](https://cloud.githubusercontent.com/assets/4397770/9688323/13a7b1e2-52f4-11e5-863e-e261dc2b3b26.png)
 
 ![alt tag](https://cloud.githubusercontent.com/assets/4397770/9688321/1382d9f8-52f4-11e5-976c-407fafdbe622.png)
+
+
+
+## How to implement
+[![](https://jitpack.io/v/grimarj89/MultiSpinnerSelect.svg)](https://jitpack.io/#grimarj89/MultiSpinnerSelect)
+
+```
+
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+
+```
+
+
+
+```
+    dependencies {
+	        implementation 'com.github.grimarj89:MultiSpinnerSelect:Tag'
+	}
+
+
+```
+
+
+
+
 
 
