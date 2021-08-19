@@ -15,8 +15,7 @@ import com.grimgdl.model.Product;
 import com.grimgdl.ui.widget.MultiSpinnerSelect;
 
 import java.util.ArrayList;
-
-
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements
@@ -86,19 +85,12 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
-            case R.id.button:
-
-                    getSelected();
-
-
-                break;
-        }
+        if(v.getId() == R.id.button ){ getSelected(); }
 
     }
 
     public void getSelected(){
-        ArrayList<Product> sele = multiSpinnerSelect.getSelectedItems();
+        List<Product> sele = multiSpinnerSelect.getSelectedItems();
 
         txt.setText("");
         txt.setText("item id\t\t\t\t\t\tnombre\n");

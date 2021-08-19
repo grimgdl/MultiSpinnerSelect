@@ -10,8 +10,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
@@ -32,7 +30,7 @@ public class MultiSpinnerSelect extends Spinner implements
     private boolean[] selected;
     private String defaultText;
     private MultiSpinnerListener listener;
-    ItemsAdapter arrayAdapter;
+    private ItemsAdapter arrayAdapter;
     List<Product> selectedProduct = new ArrayList<>();
 
 
@@ -52,10 +50,7 @@ public class MultiSpinnerSelect extends Spinner implements
     @Override
     public void onClick(DialogInterface dialog, int which, boolean isChecked) {
         Log.d("Multi", "OnClick");
-        if (isChecked)
-            selected[which] = true;
-        else
-            selected[which] = false;
+        selected[which] = isChecked;
 
     }
 
@@ -63,7 +58,7 @@ public class MultiSpinnerSelect extends Spinner implements
     public void onCancel(DialogInterface dialog) {
         Log.d("Multi", "onCancel");
         StringBuilder spinnerBuffer = new StringBuilder();
-        ArrayList<Product> productos = arrayAdapter.getProductos();
+        List<Product> productos = arrayAdapter.getProductos();
         String spinnerText;
         boolean someUnSelected = false;
         for (Product producto : productos){
@@ -98,22 +93,24 @@ public class MultiSpinnerSelect extends Spinner implements
     @Override
     public boolean performClick() {
 
+        super.performClick();
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
         builder.setAdapter(arrayAdapter, null);
         builder.setPositiveButton("Aceptar", (dialog, which) -> dialog.cancel());
         builder.setOnCancelListener(this);
 
         AlertDialog alertDialog = builder.create();
 
+
+
         ListView listView = alertDialog.getListView();
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Product producto = (Product) parent.getItemAtPosition(position);
 
-            if (producto.isChecked())
-                producto.setChecked(false);
-            else
-                producto.setChecked(true);
+            producto.setChecked(!producto.isChecked());
 
 
             arrayAdapter.notifyDataSetChanged();
@@ -126,7 +123,7 @@ public class MultiSpinnerSelect extends Spinner implements
         return true;
     }
 
-    public void setItems(ArrayList<Product> items, String allText, MultiSpinnerListener listener){
+    public void setItems(List<Product> items, String allText, MultiSpinnerListener listener){
 
         this.defaultText = allText;
         this.listener = listener;
@@ -135,6 +132,7 @@ public class MultiSpinnerSelect extends Spinner implements
         selected = new boolean[items.size()];
         Arrays.fill(selected, false);
 
+
         arrayAdapter = new ItemsAdapter(getContext(),items);
         setAdapter(arrayAdapter);
 
@@ -142,11 +140,11 @@ public class MultiSpinnerSelect extends Spinner implements
 
 
     public interface MultiSpinnerListener {
-        public void onItemsSelected(boolean[] selected);
+        void onItemsSelected(boolean[] selected);
     }
 
-    public ArrayList<Product> getSelectedItems(){
-        ArrayList<Product> productos = arrayAdapter.getProductos();
+    public List<Product> getSelectedItems(){
+        List<Product> productos = arrayAdapter.getProductos();
         ArrayList<Product> produtoSelected = new ArrayList<>();
         for (Product producto : productos){
             if (producto.isChecked()){
@@ -155,8 +153,8 @@ public class MultiSpinnerSelect extends Spinner implements
         }
         return produtoSelected;
     }
-    private ArrayList<Product> getPopulateListTest(){
-        ArrayList<Product> arrayList = new ArrayList<>();
+    private List<Product> getPopulateListTest(){
+        List<Product> arrayList = new ArrayList<>();
         for (int i=0; i < 20; i++){
             final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i );
 

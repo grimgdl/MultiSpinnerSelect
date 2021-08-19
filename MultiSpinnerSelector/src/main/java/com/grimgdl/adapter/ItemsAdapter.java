@@ -12,13 +12,13 @@ import com.grimgdl.R;
 import com.grimgdl.model.Product;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class ItemsAdapter extends ArrayAdapter<Product>{
 
     Context context;
-    ArrayList<Product> productos;
+    List<Product> productos;
     LayoutInflater inflater;
     Product modelProducto;
 
@@ -28,8 +28,8 @@ public class ItemsAdapter extends ArrayAdapter<Product>{
         CheckBox checkBox;
 
     }
-    public ItemsAdapter(Context context, ArrayList<Product> objects) {
-        super(context, android.R.layout.simple_list_item_2, objects);
+    public ItemsAdapter(Context context, List<Product> objects) {
+        super(context, android.R.layout.simple_spinner_item, objects);
 
         this.context = context;
         this.productos = objects;
@@ -66,7 +66,7 @@ public class ItemsAdapter extends ArrayAdapter<Product>{
 
     }
 
-    public ArrayList<Product> getProductos(){
+    public List<Product> getProductos(){
         return productos;
     }
 }
