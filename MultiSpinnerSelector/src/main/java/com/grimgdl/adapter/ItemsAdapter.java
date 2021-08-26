@@ -57,6 +57,13 @@ public class ItemsAdapter extends ArrayAdapter<Product>{
 
         modelProducto = productos.get(position);
 
+        if (modelProducto.getId() == 0){
+            viewHolder.checkBox.setVisibility(View.INVISIBLE);
+        }else {
+            viewHolder.checkBox.setVisibility(View.VISIBLE);
+        }
+
+
         viewHolder.txtNombre.setText(modelProducto.getNombre());
         viewHolder.txtPresentacion.setText(modelProducto.getPresentacion());
         viewHolder.checkBox.setChecked(modelProducto.isChecked());

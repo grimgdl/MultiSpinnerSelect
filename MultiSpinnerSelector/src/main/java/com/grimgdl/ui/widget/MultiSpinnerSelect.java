@@ -57,29 +57,28 @@ public class MultiSpinnerSelect extends Spinner implements
     @Override
     public void onCancel(DialogInterface dialog) {
         Log.d("Multi", "onCancel");
-        StringBuilder spinnerBuffer = new StringBuilder();
         List<Product> productos = arrayAdapter.getProductos();
+        List<Product> checkProducts = new ArrayList<>();
         String spinnerText;
-        boolean someUnSelected = false;
         for (Product producto : productos){
             if (producto.isChecked()){
-                spinnerBuffer.append(producto.getNombre());
-                spinnerBuffer.append(", ");
-            } else {
-                someUnSelected = true;
+                checkProducts.add(producto);
             }
-
         }
 
-        if (someUnSelected){
-            spinnerText = spinnerBuffer.toString();
-            if (spinnerText.length() > 2)
-                spinnerText = spinnerText.substring(0, spinnerText.length() - 2);
-            else
-                spinnerText = defaultText;
+        int checkSize = checkProducts.size();
 
-        } else {
+        if (checkSize > 0 ){
+
+            if (checkSize == 1){
+                spinnerText = "1 item selected";
+            }else {
+                spinnerText = "some items selected";
+            }
+
+        }else {
             spinnerText = defaultText;
+
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
@@ -132,6 +131,10 @@ public class MultiSpinnerSelect extends Spinner implements
         selected = new boolean[items.size()];
         Arrays.fill(selected, false);
 
+        final Product product = new Product(0, allText, "");
+
+
+        items.add(0, product);
 
         arrayAdapter = new ItemsAdapter(getContext(),items);
         setAdapter(arrayAdapter);
