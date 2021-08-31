@@ -45,7 +45,9 @@ Step 2. Add the dependency
 
 
 ## Capture
-![untitled](https://user-images.githubusercontent.com/4397770/131383204-d620d56d-82d5-41cc-9d45-bdc25656ce59.gif)
+
+![untitled~1](https://user-images.githubusercontent.com/4397770/131577618-af987da8-e0e0-44f0-956e-e6760e08a924.gif)
+
 
 
 
