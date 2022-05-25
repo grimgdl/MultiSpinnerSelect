@@ -22,6 +22,7 @@ import com.grimgdl.model.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class MultiSpinnerSelect extends Spinner implements
@@ -147,14 +148,9 @@ public class MultiSpinnerSelect extends Spinner implements
     }
 
     public List<Product> getSelectedItems(){
-        List<Product> productos = arrayAdapter.getProductos();
-        ArrayList<Product> produtoSelected = new ArrayList<>();
-        for (Product producto : productos){
-            if (producto.isChecked()){
-                produtoSelected.add(producto);
-            }
-        }
-        return produtoSelected;
+        List<Product> items = arrayAdapter.getProductos();
+
+        return items.stream().filter(product -> product.isChecked()).collect(Collectors.toList());
     }
     private List<Product> getPopulateListTest(){
         List<Product> arrayList = new ArrayList<>();
