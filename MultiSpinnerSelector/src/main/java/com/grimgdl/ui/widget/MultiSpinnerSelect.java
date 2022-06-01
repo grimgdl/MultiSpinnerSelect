@@ -1,15 +1,12 @@
 package com.grimgdl.ui.widget;
 
 
-
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnMultiChoiceClickListener;
+
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
@@ -20,44 +17,38 @@ import com.grimgdl.adapter.ItemsAdapter;
 import com.grimgdl.model.Product;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class MultiSpinnerSelect extends Spinner implements
-        OnMultiChoiceClickListener, OnCancelListener {
+         OnCancelListener {
 
-    private boolean[] selected;
     private String defaultText;
-    private MultiSpinnerListener listener;
     private ItemsAdapter arrayAdapter;
     List<Product> selectedProduct = new ArrayList<>();
+    private final Context _context;
 
 
     public MultiSpinnerSelect(Context context) {
         super(context);
+        this._context = context;
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this._context = context;
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this._context = context;
     }
 
 
-    @Override
-    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-        Log.d("Multi", "OnClick");
-        selected[which] = isChecked;
-
-    }
 
     @Override
     public void onCancel(DialogInterface dialog) {
-        Log.d("Multi", "onCancel");
         List<Product> productos = arrayAdapter.getProductos();
         List<Product> checkProducts = new ArrayList<>();
         String spinnerText;
@@ -82,10 +73,10 @@ public class MultiSpinnerSelect extends Spinner implements
 
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(_context,
                 android.R.layout.simple_spinner_item, new String[]{ spinnerText });
         setAdapter(adapter);
-        listener.onItemsSelected(selected);
+        this.clearFocus();
 
 
     }
@@ -112,25 +103,18 @@ public class MultiSpinnerSelect extends Spinner implements
 
             producto.setChecked(!producto.isChecked());
 
-
             arrayAdapter.notifyDataSetChanged();
 
         });
-
-        //alertDialog
 
         alertDialog.show();
         return true;
     }
 
-    public void setItems(List<Product> items, String allText, MultiSpinnerListener listener){
+    public void setItems(List<Product> items, String allText){
 
         this.defaultText = allText;
-        this.listener = listener;
 
-        //all selected by default
-        selected = new boolean[items.size()];
-        Arrays.fill(selected, false);
 
         final Product product = new Product(0, allText, "");
 
@@ -150,7 +134,7 @@ public class MultiSpinnerSelect extends Spinner implements
     public List<Product> getSelectedItems(){
         List<Product> items = arrayAdapter.getProductos();
 
-        return items.stream().filter(product -> product.isChecked()).collect(Collectors.toList());
+        return items.stream().filter(Product::isChecked).collect(Collectors.toList());
     }
     private List<Product> getPopulateListTest(){
         List<Product> arrayList = new ArrayList<>();

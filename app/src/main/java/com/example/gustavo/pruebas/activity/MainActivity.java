@@ -19,7 +19,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements
-        MultiSpinnerSelect.MultiSpinnerListener, View.OnClickListener {
+         View.OnClickListener {
 
     Button btnSelected;
     TextView txt;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements
         txt = findViewById(R.id.txt_texto);
 
         multiSpinnerSelect = findViewById(R.id.spinner_product);
-        multiSpinnerSelect.setItems(getProducts(),"Nothing Selected",this);
+        multiSpinnerSelect.setItems(getProducts(),"Nothing Selected");
     }
 
     private ArrayList<Product> getProducts(){
@@ -77,10 +77,7 @@ public class MainActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onItemsSelected(boolean[] selected) {
 
-    }
 
     @Override
     public void onClick(View v) {
