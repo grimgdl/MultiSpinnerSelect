@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 
+import com.grimgdl.R;
 import com.grimgdl.adapter.ItemsAdapter;
 import com.grimgdl.model.Product;
 
@@ -33,16 +34,23 @@ public class MultiSpinnerSelect extends Spinner implements
     public MultiSpinnerSelect(Context context) {
         super(context);
         this._context = context;
+
+        setBackgroundResource(R.drawable.blue_outline);
+
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs) {
         super(context, attrs);
         this._context = context;
+        setBackgroundResource(R.drawable.blue_outline);
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this._context = context;
+
+        setBackgroundResource(R.drawable.blue_outline);
+
     }
 
 
@@ -136,6 +144,7 @@ public class MultiSpinnerSelect extends Spinner implements
 
         return items.stream().filter(Product::isChecked).collect(Collectors.toList());
     }
+
     private List<Product> getPopulateListTest(){
         List<Product> arrayList = new ArrayList<>();
         for (int i=0; i < 20; i++){
