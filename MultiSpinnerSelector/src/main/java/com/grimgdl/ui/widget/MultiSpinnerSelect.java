@@ -35,21 +35,21 @@ public class MultiSpinnerSelect extends Spinner implements
         super(context);
         this._context = context;
 
-        setBackgroundResource(R.drawable.blue_outline);
+        //setBackgroundResource(R.drawable.blue_outline);
 
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs) {
         super(context, attrs);
         this._context = context;
-        setBackgroundResource(R.drawable.blue_outline);
+        //setBackgroundResource(R.drawable.blue_outline);
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this._context = context;
 
-        setBackgroundResource(R.drawable.blue_outline);
+        //setBackgroundResource(R.drawable.blue_outline);
 
     }
 
