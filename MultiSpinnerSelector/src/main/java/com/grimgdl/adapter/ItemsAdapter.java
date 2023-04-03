@@ -13,6 +13,7 @@ import com.grimgdl.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ItemsAdapter extends ArrayAdapter<Product>{
@@ -74,6 +75,6 @@ public class ItemsAdapter extends ArrayAdapter<Product>{
     }
 
     public List<Product> getProductos(){
-        return productos;
+        return productos.stream().filter(Product::isChecked).collect(Collectors.toList());
     }
 }

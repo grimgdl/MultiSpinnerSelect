@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 
+import android.content.LocusId;
 import android.util.AttributeSet;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
@@ -26,17 +28,20 @@ public class MultiSpinnerSelect extends Spinner implements
          OnCancelListener {
 
     private String defaultText;
+
     private ItemsAdapter arrayAdapter;
-    List<Product> selectedProduct = new ArrayList<>();
+
+    List<Product> list;
+
     private final Context _context;
+
+
 
 
     public MultiSpinnerSelect(Context context) {
         super(context);
         this._context = context;
-
         //setBackgroundResource(R.drawable.blue_outline);
-
     }
 
     public MultiSpinnerSelect(Context context, AttributeSet attrs) {
@@ -50,21 +55,13 @@ public class MultiSpinnerSelect extends Spinner implements
         this._context = context;
 
         //setBackgroundResource(R.drawable.blue_outline);
-
     }
-
-
 
     @Override
     public void onCancel(DialogInterface dialog) {
-        List<Product> productos = arrayAdapter.getProductos();
-        List<Product> checkProducts = new ArrayList<>();
+
+        List<Product> checkProducts = arrayAdapter.getProductos();
         String spinnerText;
-        for (Product producto : productos){
-            if (producto.isChecked()){
-                checkProducts.add(producto);
-            }
-        }
 
         int checkSize = checkProducts.size();
 
@@ -82,9 +79,8 @@ public class MultiSpinnerSelect extends Spinner implements
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(_context,
-                android.R.layout.simple_spinner_item, new String[]{ spinnerText });
+                R.layout.textview1, new String[]{ spinnerText });
         setAdapter(adapter);
-        this.clearFocus();
 
 
     }
@@ -96,12 +92,13 @@ public class MultiSpinnerSelect extends Spinner implements
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
+        arrayAdapter = new ItemsAdapter(getContext(), this.list);
+
         builder.setAdapter(arrayAdapter, null);
         builder.setPositiveButton("Aceptar", (dialog, which) -> dialog.cancel());
         builder.setOnCancelListener(this);
 
         AlertDialog alertDialog = builder.create();
-
 
 
         ListView listView = alertDialog.getListView();
@@ -116,21 +113,20 @@ public class MultiSpinnerSelect extends Spinner implements
         });
 
         alertDialog.show();
+        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
         return true;
     }
 
     public void setItems(List<Product> items, String allText){
 
         this.defaultText = allText;
+        this.list = items;
 
-
-        final Product product = new Product(0, allText, "");
-
-
-        items.add(0, product);
-
-        arrayAdapter = new ItemsAdapter(getContext(),items);
-        setAdapter(arrayAdapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(_context,
+                R.layout.textview1, new String[]{ defaultText });
+        setAdapter(adapter);
 
     }
 
@@ -145,19 +141,6 @@ public class MultiSpinnerSelect extends Spinner implements
         return items.stream().filter(Product::isChecked).collect(Collectors.toList());
     }
 
-    private List<Product> getPopulateListTest(){
-        List<Product> arrayList = new ArrayList<>();
-        for (int i=0; i < 20; i++){
-            final Product producto = new Product(i + 1, "Producto " + i, "gr2" + i );
-
-            arrayList.add(producto);
-        }
 
 
-        return arrayList;
-    }
-
-    public List<Product> getSelectedProduct(){
-        return selectedProduct;
-    }
 }
